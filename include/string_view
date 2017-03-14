@@ -23,7 +23,7 @@ public:
 	using const_reference = T const &;
 	using const_iterator = T const *;
 	using iterator = const_iterator;
-	using const_reverse_iterator = reverse_iterator<const_iterator>;
+	using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 	using reverse_iterator = const_reverse_iterator;
 	using size_type = size_t;
 	using difference_type = ptrdiff_t;
@@ -189,25 +189,25 @@ constexpr auto std::basic_string_view<T, Traits>::cend() const noexcept -> const
 template <typename T, typename Traits>
 constexpr auto std::basic_string_view<T, Traits>::rbegin() const noexcept -> const_reverse_iterator
 {
-	return std::make_reverse_iterator(last_);
+	return std::reverse_iterator<iterator>(last_);
 }
 
 template <typename T, typename Traits>
 constexpr auto std::basic_string_view<T, Traits>::rend() const noexcept -> const_reverse_iterator
 {
-	return std::make_reverse_iterator(first_);
+	return std::reverse_iterator<iterator>(first_);
 }
 
 template <typename T, typename Traits>
 constexpr auto std::basic_string_view<T, Traits>::crbegin() const noexcept -> const_reverse_iterator
 {
-	return std::make_reverse_iterator(last_);
+	return std::reverse_iterator<iterator>(last_);
 }
 
 template <typename T, typename Traits>
 constexpr auto std::basic_string_view<T, Traits>::crend() const noexcept -> const_reverse_iterator
 {
-	return std::make_reverse_iterator(first_);
+	return std::reverse_iterator<iterator>(first_);
 }
 
 template <typename T, typename Traits>
@@ -237,7 +237,6 @@ constexpr bool std::basic_string_view<T, Traits>::empty() const noexcept
 template <typename T, typename Traits>
 constexpr T const & std::basic_string_view<T, Traits>::operator[](size_t pos) const
 {
-	assert(pos < this->size());
 	return first_[pos];
 }
 
