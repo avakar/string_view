@@ -251,14 +251,14 @@ constexpr T const & std::basic_string_view<T, Traits>::at(size_t pos) const
 template <typename T, typename Traits>
 constexpr T const & std::basic_string_view<T, Traits>::front() const
 {
-	assert(this->empty());
+	assert(!this->empty());
 	return first_[0];
 }
 
 template <typename T, typename Traits>
 constexpr T const & std::basic_string_view<T, Traits>::back() const
 {
-	assert(this->empty());
+	assert(!this->empty());
 	return last_[-1];
 }
 
